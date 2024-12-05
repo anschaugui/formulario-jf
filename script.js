@@ -5,6 +5,26 @@ const selections = {
     handrail: ''
 };
 
+// Open the modal
+function openModal() {
+    document.getElementById('design-help-modal').style.display = 'flex';
+}
+
+// Close the modal
+function closeModal() {
+    document.getElementById('design-help-modal').style.display = 'none';
+}
+
+// Close the modal when clicking outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById('design-help-modal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+};
+
+
+
 function goToStep(stepNumber) {
     const currentStep = document.querySelector('.form-section.active');
     const currentStepIndex = Array.from(document.querySelectorAll('.form-section')).indexOf(currentStep);

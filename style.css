@@ -9,15 +9,15 @@
 html, body {
     height: 100%;  /* Garantir que a altura da página ocupe toda a tela */
     margin: 0;     /* Remover margens padrão */
-    overflow: hidden;  /* Desabilitar a rolagem da página */
+    overflow: auto;  /* Desabilitar a rolagem da página */
     display: flex;  /* Usar flexbox para centralizar o conteúdo */
+    
     align-items: center; /* Centralizar o conteúdo verticalmente */
     justify-content: center; /* Centralizar o conteúdo horizontalmente */
 }
 /* Layout principal */
 body {
     display: flex;
-    justify-content: flex-end;
     padding: 0;
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -38,12 +38,13 @@ body {
 .container {
     margin-top: 60px;
     width: 65vw; /* Ocupa 65% da largura da tela */
-    height: 100vh; /* Ocupa 100% da altura da tela */
+    height: auto; /* Permitir que a altura seja ajustada conforme o conteúdo */
     background-color: #ffffff;
     padding: 20px;
     box-sizing: border-box;
     border-left: 1px solid #ddd;
     box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Adicionar rolagem no formulário se necessário */
 }
 
 .step-header {
@@ -353,6 +354,59 @@ label {
 }
 
 
+/*summary*/
+/* Título da seção */
+.section-title {
+    margin-top: 20px;
+    font-size: 20px; /* Reduz o tamanho do título */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px; /* Espaçamento inferior */
+    text-align: left; /* Centraliza o título */
+}
+
+
+
+.compact-form input {
+    width: 100%; /* Ocupa toda a largura do container */
+    padding: 8px; /* Reduz o espaçamento interno */
+    margin-bottom: 10px; /* Reduz espaço entre os campos */
+    border: 1px solid #ccc; /* Define borda leve */
+    border-radius: 4px; /* Bordas arredondadas menores */
+    font-size: 14px; /* Tamanho de fonte menor */
+}
+
+/* Botão do formulário */
+.form-submit-button {
+    width: 100%; /* Ocupa toda a largura do container */
+    padding: 10px; /* Reduz o espaçamento interno */
+    background-color: #072927;
+    color: white;
+    border: none;
+    border-radius: 4px; /* Bordas arredondadas menores */
+    font-size: 14px; /* Reduz o tamanho da fonte */
+    cursor: pointer;
+    margin-top: 10px; /* Espaçamento superior */
+}
+
+.form-submit-button:hover {
+    background-color: #004d47; /* Fundo mais escuro no hover */
+}
+
+/* Resumo compactado */
+.summary-container {
+    font-size: 14px; /* Tamanho menor para o texto do resumo */
+    line-height: 1.4; /* Reduz o espaçamento entre linhas */
+    color: #555; /* Cor mais leve para o texto */
+    margin-top: 10px; /* Espaçamento superior */
+}
+
+.summary-container p {
+    margin-bottom: 5px; /* Reduz espaço entre os parágrafos */
+}
+
+
+
 
 /* Para telas maiores - layout lado a lado */
 @media (min-width: 1025px) {
@@ -571,27 +625,184 @@ label {
 }
 
 
-/* Estilo do pop-up do tooltip */
-.tooltip::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #333;
-    color: #fff;
-    font-size: 14px;
-    padding: 8px;
-    border-radius: 6px;
-    width: 200px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s;
+
+/* Botão Previous */
+.previous-button {
+    background: none; /* Remove o fundo */
+    color: #007BFF; /* Azul no texto */
+    text-decoration: underline; /* Adiciona sublinhado */
+    cursor: pointer; /* Indica clicável */
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    width: 100%;
+    max-width: 120vh; /* Opcional: define uma largura máxima para o botão */
+    display: block;
     text-align: center;
 }
 
-/* Mostrar o tooltip quando o usuário passar o mouse */
-.tooltip:hover::after {
-    opacity: 1;
-    visibility: visible;
+/* Efeito ao passar o mouse por cima */
+.previous-button:hover {
+    color: #0056b3; /* Cor mais escura ao passar o mouse */
+    text-decoration: underline; /* Mantém o sublinhado */
+}
+
+/* Efeito ao pressionar o botão */
+.previous-button:active {
+    color: #003f7f; /* Cor ainda mais escura ao pressionar */
+}
+
+/* Efeito de foco (acessibilidade) */
+.previous-button:focus {
+    outline: none; /* Remove o contorno padrão */
+    text-decoration: underline; /* Mantém o sublinhado */
+    color: #0056b3; /* Cor mais escura para foco */
+}
+
+/* Botão desabilitado */
+.previous-button:disabled {
+    color: #c6c6c6; /* Cinza para indicar desabilitado */
+    cursor: not-allowed; /* Mostra que não é clicável */
+    text-decoration: none; /* Remove sublinhado */
+}
+
+
+/* Modal container */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Ensure it is above other content */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(7, 41, 39, 0.8); /* Fundo semi-transparente com #072927 */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal content */
+.modal-content {
+    background-color: #FFFFFF; /* Fundo branco */
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Close button */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #072927; /* Cor escura da paleta */
+    cursor: pointer;
+}
+
+/* Título do modal */
+.modal-content h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #072927; /* Cor escura */
+    margin-bottom: 10px;
+}
+
+/* Texto do modal */
+.modal-content p {
+    font-size: 14px;
+    color: #072927;
+    margin-bottom: 20px;
+}
+
+/* Link dentro do modal */
+.modal-content a {
+    color: #E3A03B; /* Dourado */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.modal-content a:hover {
+    text-decoration: underline;
+}
+
+/* Form styles */
+#design-help-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left; /* Alinha os rótulos e inputs à esquerda */
+}
+
+#design-help-form label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #072927; /* Cor escura */
+}
+
+#design-help-form input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #E3A03B; /* Borda dourada */
+    border-radius: 4px;
+    background-color: #FFFFFF; /* Fundo branco */
+}
+
+#design-help-form input:focus {
+    outline: none;
+    border-color: #072927; /* Destaque ao focar */
+}
+
+/* CAPTCHA */
+.captcha {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #072927;
+}
+
+.captcha input {
+    margin-right: 5px;
+}
+
+/* Botão de envio */
+.form-submit-button {
+    background-color: #E3A03B; /* Dourado */
+    color: #FFFFFF; /* Texto branco */
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form-submit-button:hover {
+    background-color: #072927; /* Cor escura no hover */
+    color: #FFFFFF; /* Texto branco */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%; /* Ajusta largura em telas menores */
+        padding: 15px;
+    }
+
+    #design-help-form label {
+        font-size: 12px;
+    }
+
+    #design-help-form input {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .form-submit-button {
+        padding: 10px;
+        font-size: 12px;
+    }
 }
