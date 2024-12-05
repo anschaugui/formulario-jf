@@ -15,14 +15,6 @@ function closeModal() {
     document.getElementById('design-help-modal').style.display = 'none';
 }
 
-// Close the modal when clicking outside of it
-window.onclick = function(event) {
-    const modal = document.getElementById('design-help-modal');
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-};
-
 // Função para abrir o modal de "Details"
 function openDetailsModal() {
     const detailsModal = document.getElementById('details-modal');
@@ -35,14 +27,21 @@ function closeDetailsModal() {
     detailsModal.style.display = 'none'; // Oculta o modal
 }
 
-// Fecha o modal quando o usuário clica fora dele
-window.onclick = function(event) {
+// Combina os eventos de clique para fechar ambos os modais
+window.onclick = function (event) {
+    const designHelpModal = document.getElementById('design-help-modal');
     const detailsModal = document.getElementById('details-modal');
+
+    // Fecha o modal de "Need Design Help" se clicar fora dele
+    if (event.target === designHelpModal) {
+        designHelpModal.style.display = 'none';
+    }
+
+    // Fecha o modal de "Details" se clicar fora dele
     if (event.target === detailsModal) {
-        detailsModal.style.display = 'none'; // Fecha o modal
+        detailsModal.style.display = 'none';
     }
 };
-
 
 function goToStep(stepNumber) {
     const currentStep = document.querySelector('.form-section.active');
@@ -168,5 +167,3 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-
-
