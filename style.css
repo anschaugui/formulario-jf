@@ -806,3 +806,30 @@ label {
         font-size: 12px;
     }
 }
+
+/* Estilo geral para as seções do formulário */
+.form-section {
+    position: relative; /* Define cada seção como referência para posicionamento do botão */
+    padding-top: 40px; /* Garante espaço suficiente para o botão Details */
+}
+
+/* Estilo do botão Details */
+.details-button {
+    position: absolute; /* Posiciona o botão em relação à seção */
+    top: 10px; /* Distância do topo da seção */
+    right: 10px; /* Distância da lateral direita da seção */
+    background-color: transparent; /* Fundo transparente */
+    color: #007acc; /* Cor do texto */
+    font-size: 14px; /* Tamanho da fonte */
+    border: none; /* Remove bordas */
+    cursor: pointer; /* Mostra que é clicável */
+    text-decoration: underline; /* Adiciona sublinhado */
+    font-weight: bold;
+}
+
+/* Hover no botão Details */
+.details-button:hover {
+    color: #0056b3; /* Altera a cor ao passar o mouse */
+    text-decoration: none; /* Remove o sublinhado no hover */
+}
+

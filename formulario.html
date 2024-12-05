@@ -63,7 +63,10 @@
 <div class="form-section active" id="dimension-section">
     <h2>Dimension</h2>
     <p>First, let's get your stairs' height and width.</p>
-
+    
+     <!-- Botão Details -->
+     <button class="details-button" onclick="openDetailsModal()">Details</button>
+    
     <!-- Campo de Largura com Tooltip -->
     <label for="stair-width">Select a Width for Your Stair
         <!-- Tooltip -->
@@ -107,6 +110,10 @@
         <div class="form-section" id="tread-section">
             <h2>Tread</h2>
             <p>Now let's design your steps.</p>
+
+            <!-- Botão Details -->
+            <button class="details-button" onclick="openDetailsModal()">Details</button>
+
             <h3>Select a Tread Type for Your Stair</h3>
             <div class="option-container">
                 <div class="option" onclick="selectOption(this, 'treadType', 'Red Oak', 'FLOATINGSTAIRS-GLASSRAILING2-1024x1024 (2).jpg')">
@@ -126,6 +133,8 @@
         <div class="form-section" id="accessories-section">
             <h2>Accessories</h2>
             <p>Let's make your stairs yours.</p>
+            <!-- Botão Details -->
+            <button class="details-button" onclick="openDetailsModal()">Details</button>
             <h3>Select a Handrail for Your Stair</h3>
             <div class="option-container">
                 <div class="option" onclick="selectOption(this, 'handrail', 'Vinyl', 'vinyl.jpg')">
@@ -147,7 +156,8 @@
         <h2 class="intro-title">Free Consultation to Review Your Design</h2>
         <p class="intro-text">Our designers are experts at finding the right mix of price and design. They will walk you through your selected options and refine them to get the price point you need with the look and feel you desire.</p>
     </div>
-
+    <!-- Botão Details -->
+    <a href="#" class="details-button" onclick="openDetailsModal()">Details</a>
     <h2 class="section-title">Cadastro</h2>
     <form id="cadastro-form" class="compact-form">
         <label for="name">Nome:</label>
@@ -170,6 +180,21 @@
         <p><strong>Height:</strong> <span id="height-selection"></span></p>
         <p><strong>Tread Type:</strong> <span id="treadType-selection"></span></p>
         <p><strong>Handrail:</strong> <span id="handrail-selection"></span></p>
+    </div>
+</div>
+
+ <!-- Modal para Details -->
+ <div id="details-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeDetailsModal()">&times;</span>
+        <h2>Stair Details</h2>
+        <p>Here are the details about the stair dimensions and customization options.</p>
+        <ul>
+            <li><strong>Width:</strong> Customize the stair width from 3' 6" to 4' 6".</li>
+            <li><strong>Height:</strong> Available heights range from 7' 9" to 10' 0".</li>
+            <li><strong>Materials:</strong> Choose from high-quality wood and metal options.</li>
+            <li><strong>Handrails:</strong> Customize the style and finish of your handrail.</li>
+        </ul>
     </div>
 </div>
 

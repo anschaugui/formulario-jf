@@ -23,6 +23,25 @@ window.onclick = function(event) {
     }
 };
 
+// Função para abrir o modal de "Details"
+function openDetailsModal() {
+    const detailsModal = document.getElementById('details-modal');
+    detailsModal.style.display = 'flex'; // Torna o modal visível
+}
+
+// Função para fechar o modal de "Details"
+function closeDetailsModal() {
+    const detailsModal = document.getElementById('details-modal');
+    detailsModal.style.display = 'none'; // Oculta o modal
+}
+
+// Fecha o modal quando o usuário clica fora dele
+window.onclick = function(event) {
+    const detailsModal = document.getElementById('details-modal');
+    if (event.target === detailsModal) {
+        detailsModal.style.display = 'none'; // Fecha o modal
+    }
+};
 
 
 function goToStep(stepNumber) {
@@ -43,17 +62,18 @@ function goToStep(stepNumber) {
     document.querySelector(`.form-section:nth-child(${stepNumber + 1})`).classList.add('active');
     document.querySelector(`.step-header .step[data-step="${stepNumber}"]`).classList.add('active');
 
-    // Controla a exibição do banner na etapa "Dimension"
+    // Exibe ou esconde o banner
     const banner = document.getElementById('dimension-banner');
-    if (stepNumber === 2) { // Supondo que a etapa "Dimension" seja a segunda
-        banner.style.display = 'flex'; // Exibe o banner
+    if (stepNumber === 1) {
+        banner.style.display = 'flex';
     } else {
-        banner.style.display = 'none'; // Esconde o banner em outras etapas
+        banner.style.display = 'none';
     }
 
+    // Atualiza o resumo na etapa final
     if (stepNumber === 4) {
         updateSummary();
-        activatePhoneMask(); // Ativa a máscara de telefone apenas no resumo
+        activatePhoneMask();
     }
 }
 
@@ -91,17 +111,17 @@ function selectOption(element, selectionType, value, imagePath) {
     // Atualiza o valor selecionado
     selections[selectionType] = value;
 
-    // Atualiza a imagem do container com a nova imagem selecionada
+    // Atualiza a imagem do container
     const imageUrl = `img/${imagePath}`;
     document.getElementById('image-container').style.backgroundImage = `url('${imageUrl}')`;
 }
 
-
 function updateSummary() {
-    document.getElementById('summary-width').textContent = selections.stairWidth || 'Not selected';
-    document.getElementById('summary-height').textContent = selections.stairHeight || 'Not selected';
-    document.getElementById('summary-treadType').textContent = selections.treadType || 'Not selected';
-    document.getElementById('summary-handrail').textContent = selections.handrail || 'Not selected';
+    // Atualiza os elementos do resumo com base nas seleções
+    document.getElementById('width-selection').textContent = selections.stairWidth || 'Not selected';
+    document.getElementById('height-selection').textContent = selections.stairHeight || 'Not selected';
+    document.getElementById('treadType-selection').textContent = selections.treadType || 'Not selected';
+    document.getElementById('handrail-selection').textContent = selections.handrail || 'Not selected';
 }
 
 // Atualiza as seleções de largura e altura
@@ -119,48 +139,34 @@ document.getElementById('cadastro-form').addEventListener('submit', function (e)
 });
 
 // Máscara para o campo de telefone
-function activatePhoneMask() {
+function mascaraTelefone(input) {
+    let value = input.value.replace(/\D/g, ''); // Remove tudo que não for número
+    
+    // Limita o número de caracteres a 11
+    if (value.length > 11) {
+        value = value.slice(0, 11);
+    }
+
+    // Aplica a máscara no formato (XX) XXXXX-XXXX
+    if (value.length <= 2) {
+        value = `(${value}`;
+    } else if (value.length <= 7) {
+        value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+    } else {
+        value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+    }
+
+    input.value = value; // Atualiza o valor do campo
+}
+
+// Ativar a máscara no evento 'input'
+document.addEventListener('DOMContentLoaded', function () {
     const phoneInput = document.getElementById('phone');
-    phoneInput.addEventListener('input', function () {
-        let value = this.value.replace(/\D/g, ''); // Remove tudo que não for número
-        
-        // Limita o número de caracteres a 11
-        if (value.length > 11) {
-            value = value.slice(0, 11);
-        }
-        
-        // Aplica a máscara
-        value = value.replace(/^(\d{2})(\d{5})(\d{0,4})$/, '($1) $2-$3');
-        this.value = value;
-    });
-}
-
-// Função para buscar a escada selecionada
-async function loadStairDetails() {
-    const params = new URLSearchParams(window.location.search);
-    const stairId = params.get('stairId');
-
-    if (!stairId) {
-        alert('Nenhuma escada selecionada!');
-        return;
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function () {
+            mascaraTelefone(phoneInput);
+        });
     }
+});
 
-    try {
-        const response = await fetch(`http://localhost:3000/stairs/${stairId}`);
-        const stair = await response.json();
 
-        // Preencher os detalhes da escada
-        const detailsContainer = document.getElementById('stair-details');
-        detailsContainer.innerHTML = `
-            <img src="${stair.image}" alt="${stair.name}" style="max-width: 100%; height: auto;" />
-            <h2>${stair.name}</h2>
-            <p>${stair.description}</p>
-            <span class="price-level">${stair.priceLevel}</span>
-        `;
-    } catch (error) {
-        console.error('Erro ao carregar os detalhes da escada:', error);
-    }
-}
-
-// Carregar os detalhes ao iniciar
-loadStairDetails();
