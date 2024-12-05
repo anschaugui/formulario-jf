@@ -1,0 +1,98 @@
+/* Definindo a paleta de cores */
+:root {
+    --primary-color: #072927;  /* Cor escura */
+    --accent-color: #E3A03B;   /* Cor de destaque */
+    --white-color: #FFFFFF;    /* Cor branca */
+}
+
+/* Estilos gerais do corpo */
+body {
+    font-family: 'Archivo', sans-serif;
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para o header */
+header {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* Estilo do catálogo de produtos */
+.catalogo {
+    display: flex;
+    justify-content: center; /* Centraliza as imagens horizontalmente */
+    gap: 20px; /* Controla o espaçamento entre as imagens */
+    margin: 40px 0;
+    flex-wrap: wrap; /* Permite que as imagens se ajustem se o espaço for pequeno */
+}
+
+/* Estilo para os produtos (escadarias) */
+.produto {
+    text-align: center;
+    width: 250px; /* Largura das imagens */
+    background-color: var(--white-color);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de hover para os produtos */
+.produto:hover {
+    transform: translateY(-5px); /* Efeito de flutuação */
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para as imagens das escadarias */
+.produto img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Estilo para o título do produto */
+.produto h2 {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+/* Estilo para a descrição do produto */
+.produto .descricao {
+    font-size: 0.875rem;
+    color: #555;
+    margin: 10px 0;
+}
+
+/* Estilo para o preço do produto */
+.produto .preco {
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    margin: 10px 0;
+}
+
+/* Estilo do botão de comprar */
+.comprar-btn {
+    background-color: var(--accent-color);
+    color: var(--white-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.comprar-btn:hover {
+    background-color: #D88B31; /* Cor de hover mais escura */
+}

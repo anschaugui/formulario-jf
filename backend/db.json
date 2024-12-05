@@ -1,0 +1,26 @@
+{
+    "stairs": [
+      {
+        "id": "heritage",
+        "name": "The Heritage",
+        "description": "A classic wooden staircase with metal handrails.",
+        "priceLevel": "$",
+        "image": "img/image copy 3.png"
+      },
+      {
+        "id": "modern-line",
+        "name": "The Modern Line",
+        "description": "A sleek and modern staircase with minimalistic design.",
+        "priceLevel": "$$",
+        "image": "https://your-digitalocean-space-url/modern-line.jpg"
+      },
+      {
+        "id": "crystal-clear",
+        "name": "The Crystal Clear",
+        "description": "A premium staircase with glass and wood elements.",
+        "priceLevel": "$$$",
+        "image": "https://your-digitalocean-space-url/crystal-clear.jpg"
+      }
+    ]
+  }
+  

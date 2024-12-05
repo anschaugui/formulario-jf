@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Escada</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="img/logo.png" alt="JF Stairs Logo"> <!-- Substitua pela URL do logo -->
+            <span class="logo-text"></span>
+        </div>
+        <div class="header-content">
+            <a href="catalogo.html" class="back-link">Back to JF</a>
+            <span class="product-title">The Retreat Spiral Stair</span>
+            <span class="product-price">| $$$</span>
+        </div>
+        <a href="#" class="help-button">Need Design Help?</a>
+    </header>
+
+    <div id="image-container"></div>
+
+
+
+    <div class="container">
+        <div class="step-header">
+            <div class="step active" data-step="1" onclick="goToStep(1)">01 <br> Dimension</div>
+            <div class="step" data-step="2" onclick="goToStep(2)">02 <br> Tread</div>
+            <div class="step" data-step="3" onclick="goToStep(3)">03 <br> Accessories</div>
+            <div class="step" data-step="4" onclick="goToStep(4)">04 <br> Summary & Cadastro</div>
+        </div>
+
+<!-- Seção Dimension -->
+<div class="form-section active" id="dimension-section">
+    <h2>Dimension</h2>
+    <p>First, let's get your stairs' height and width.</p>
+
+    <!-- Campo de Largura com Tooltip -->
+    <label for="stair-width">Select a Width for Your Stair
+        <!-- Tooltip -->
+        <span class="tooltip" data-tooltip="The width refers to the horizontal distance from one side of the stair to the other, affecting how much space is available for walking.">?</span>
+    </label>
+    <select id="stair-width" class="select-box">
+        <option value="">Select...</option>
+        <option value="3' 6&quot;">3' 6"</option>
+        <option value="4' 0&quot;">4' 0"</option>
+        <option value="4' 6&quot;">4' 6"</option>
+    </select>
+
+    <!-- Campo de Altura -->
+    <label for="stair-height">Select a Height for Your Stair</label>
+    <select id="stair-height" class="select-box">
+        <option value="">Select...</option>
+        <option value="7' 9&quot; - 8' 8&quot;">7' 9" - 8' 8" (10 Treads)</option>
+        <option value="9' 0&quot; - 10' 0&quot;">9' 0" - 10' 0" (12 Treads)</option>
+    </select>
+
+    <!-- Botão Next -->
+    <button class="next-button" onclick="goToStep(2)">Next</button>
+
+    <!-- Banner -->
+    <section>
+        <div class="banner" id="dimension-banner">
+            <img src="img/boneco-removebg-preview.png" alt="Custom Designed Staircase" class="banner-image">
+            <div class="banner-text">
+                <h3>Custom Designed to Fit Any Space & Budget</h3>
+                <p>Your staircase will be 100% custom-designed and expertly crafted with the highest quality materials to fit your exact space and budget requirements. Need help? We’re here to help every step of the way!</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+        
+
+        <!-- Seção Tread -->
+        <div class="form-section" id="tread-section">
+            <h2>Tread</h2>
+            <p>Now let's design your steps.</p>
+            <h3>Select a Tread Type for Your Stair</h3>
+            <div class="option-container">
+                <div class="option" onclick="selectOption(this, 'treadType', 'Red Oak', 'FLOATINGSTAIRS-GLASSRAILING2-1024x1024 (2).jpg')">
+                    <img src="img/image copy 3.png" alt="Red Oak">
+                    <p>Red Oak</p>
+                </div>
+                <div class="option" onclick="selectOption(this, 'treadType', 'White Oak', 'FLOATINGSTAIRS-GLASSRAILING2-1024x1024 (2).jpg')">
+                    <img src="img/image copy 6.png" alt="White Oak">
+                    <p>White Oak</p>
+                </div>
+            </div>
+            <button class="next-button" onclick="goToStep(3)">Next</button>
+        </div>
+
+        <!-- Seção Accessories -->
+        <div class="form-section" id="accessories-section">
+            <h2>Accessories</h2>
+            <p>Let's make your stairs yours.</p>
+            <h3>Select a Handrail for Your Stair</h3>
+            <div class="option-container">
+                <div class="option" onclick="selectOption(this, 'handrail', 'Vinyl', 'vinyl.jpg')">
+                    <img src="img/vinyl.jpg" alt="Vinyl">
+                    <p>Vinyl</p>
+                </div>
+                <div class="option" onclick="selectOption(this, 'handrail', 'Aluminum', 'aluminum.jpg')">
+                    <img src="img/aluminum.jpg" alt="Aluminum">
+                    <p>Aluminum</p>
+                </div>
+            </div>
+            <button class="next-button" onclick="goToStep(4)">Next</button>
+        </div>
+
+        <!-- Seção Summary & Cadastro -->
+
+
+        
+<div class="form-section" id="summary-section">
+    <h2>Cadastro</h2>
+    <form id="cadastro-form">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="phone">Telefone:</label>
+        <input type="tel" id="phone" name="phone" required oninput="mascaraTelefone(this)">
+        
+        <button type="submit">Enviar</button>
+    </form><br><br>
+
+    <h2>Resumo</h2>
+    <p>Aqui está o resumo das suas escolhas:</p>
+    <br>
+
+    <p>
+        <strong>Width:</strong>
+        <span id="summary-width" class="tooltip-container">
+            <span id="width-selection"></span>
+            <span class="tooltip-text">A largura da escada, que pode ser ajustada para se adequar ao espaço disponível.</span>
+        </span>
+    </p>
+
+    <p>
+        <strong>Height:</strong>
+        <span id="summary-height" class="tooltip-container">
+            <span id="height-selection"></span>
+            <span class="tooltip-text">A altura da escada, que depende do número de degraus a serem utilizados.</span>
+        </span>
+    </p>
+
+    <p>
+        <strong>Tread Type:</strong>
+        <span id="summary-treadType" class="tooltip-container">
+            <span id="treadType-selection"></span>
+            <span class="tooltip-text">Tipo de degrau selecionado para sua escada.</span>
+        </span>
+    </p>
+
+    <p>
+        <strong>Handrail:</strong>
+        <span id="summary-handrail" class="tooltip-container">
+            <span id="handrail-selection"></span>
+            <span class="tooltip-text">Material da proteção da escada, como corrimãos, para garantir segurança e conforto.</span>
+        </span>
+    </p>
+</div>
+
+
+    <script src="script.js">
+        
+    </script>
+</body>
+</html>
