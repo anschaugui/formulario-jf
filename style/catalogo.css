@@ -6,27 +6,18 @@
 }
 
 /* Estilos gerais do corpo */
-body {
-    font-family: 'Archivo', sans-serif;
-    background-color: var(--white-color);
-    color: var(--primary-color);
-    margin: 0;
-    padding: 0;
-}
 
-/* Estilo para o header */
-header {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    padding: 20px;
-    text-align: center;
-}
+
+
 
 h1 {
     margin: 0;
     font-size: 2.5rem;
 }
 
+.background-color{
+    background-color: #072927;
+}
 /* Estilo do catálogo de produtos */
 .catalogo {
     display: flex;
@@ -95,4 +86,106 @@ h1 {
 
 .comprar-btn:hover {
     background-color: #D88B31; /* Cor de hover mais escura */
+}
+
+/*header*/
+
+/* Estilos Gerais do Header */
+.site-header {
+    background-color: var(--white-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Logotipo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-image {
+    height: 40px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Menu de Navegação */
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    color: var(--accent-color);
+}
+
+/* Contato e Botão */
+.contact-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.phone {
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+.phone i {
+    color: var(--accent-color);
+    margin-right: 5px;
+}
+
+.phone a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    display: block;
+}
+
+.btn-pricing {
+    background-color: var(--accent-color);
+    color: var(--white-color);
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-pricing:hover {
+    background-color: #c78e2e;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
