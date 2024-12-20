@@ -57,31 +57,45 @@
     // Seleciona uma opção genérica em qualquer etapa
     function selectOption(element, selectionType, value, imagePath = null) {
         const parentSection = element.closest('.form-section');
-
+    
+        // Atualiza visualmente a seleção
         parentSection.querySelectorAll('.stair-option, .option').forEach(option => {
             option.classList.remove('selected');
         });
-
         element.classList.add('selected');
+    
+        // Atualiza o objeto de seleções
         selections[selectionType] = value;
-
+    
+        // Atualiza o background, se uma imagem for fornecida
         if (imagePath) {
             document.getElementById('image-container').style.backgroundImage = `url('img/${imagePath}')`;
         }
-
+    
+        // Mostra o modal se o usuário escolher "Não" em Design Help
         if (selectionType === 'designHelp' && value === 'Não') {
             openModal();
         }
+    
+        // Atualiza o botão "Next" para a próxima etapa dinamicamente
+        if (selectionType === 'railingType') {
+            const nextButton = document.getElementById('next-railing');
+            if (nextButton) {
+                nextButton.dataset.nextStep = 'tread-section';
+                nextButton.disabled = false; // Habilita o botão, caso esteja desativado
+            }
+        }
     }
+    
 
     // Atualiza o resumo final com as escolhas
     function updateSummary() {
-        document.getElementById('stair-type-section').textContent = selections.stairType || 'Not selected';
-        document.getElementById('stair-location').textContent = selections.stairLocation || 'Not selected';
-        document.getElementById('design-help').textContent = selections.designHelp || 'Not selected';
-        document.getElementById('handrail-selection').textContent = selections.railingType || 'Not selected';
-        document.getElementById('tread-section').textContent = selections.treadType || 'Not selected';
+        document.getElementById('summary-stair-type').textContent = selections.stairType || 'Not selected';
+        document.getElementById('summary-stair-location').textContent = selections.stairLocation || 'Not selected'
+        document.getElementById('summary-railing').textContent = selections.railingType || 'Not selected';
+        document.getElementById('summary-tread').textContent = selections.treadType || 'Not selected';
     }
+    
 
     // Máscara para telefone
     function mascaraTelefone(input) {
@@ -115,11 +129,20 @@
             option.classList.remove('selected');
         });
         element.classList.add('selected');
-
+    
+        const railingOptions = document.getElementById('railing-options');
         const nextButton = document.getElementById('next-railing');
-        nextButton.dataset.nextStep = value === 'Sim' ? 'railing-selection-section' : 'tread-section';
-        nextButton.disabled = false;
+    
+        if (value === 'Sim') {
+            railingOptions.style.display = 'block'; // Mostra as opções de Railing
+            nextButton.disabled = true; // Desativa o botão até que um tipo seja selecionado
+        } else {
+            railingOptions.style.display = 'none'; // Oculta as opções de Railing
+            nextButton.dataset.nextStep = 'tread-section'; // Avança diretamente para Tread
+            nextButton.disabled = false; // Habilita o botão "Next"
+        }
     }
+    
 
     // Avança para a próxima etapa com base na escolha
     function goToNextStep() {
@@ -145,12 +168,7 @@
         }
     
         // Atualiza o cabeçalho superior
-        let stepIndex;
-        if (nextStepId === 'railing-selection-section') {
-            stepIndex = 4; // Permanece na etapa Railing
-        } else if (nextStepId === 'tread-section') {
-            stepIndex = 5; // Avança para a etapa Treads
-        }
+        const stepIndex = parseInt(document.querySelector(`.step-header .step[data-step][class*="active"]`).dataset.step, 10) + 1;
     
         document.querySelectorAll('.step-header .step').forEach(step => step.classList.remove('active'));
         const stepToActivate = document.querySelector(`.step-header .step[data-step="${stepIndex}"]`);
@@ -158,4 +176,5 @@
             stepToActivate.classList.add('active');
         }
     }
+    
     

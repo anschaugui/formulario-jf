@@ -133,32 +133,30 @@
             <strong>Não</strong>
         </div>
     </div>
-    <button class="next-button" id="next-railing" onclick="goToNextStep()" disabled>Next</button>
+
+    <!-- Tipos de Railing (inicialmente ocultos) -->
+    <div id="railing-options" style="display: none;">
+        <h3>Selecione o tipo de railing:</h3>
+        <div class="railing-options">
+            <div class="stair-option" onclick="selectOption(this, 'railingType', 'glass')">
+                <strong>Glass Railing</strong>
+            </div>
+            <div class="stair-option" onclick="selectOption(this, 'railingType', 'horizontal')">
+                <strong>Horizontal Railing</strong>
+            </div>
+            <div class="stair-option" onclick="selectOption(this, 'railingType', 'vertical')">
+                <strong>Vertical Railing</strong>
+            </div>
+            <div class="stair-option" onclick="selectOption(this, 'railingType', 'metal')">
+                <strong>Metal Panels</strong>
+            </div>
+        </div>
+    </div>
+
+    <button class="next-button" id="next-railing" onclick="goToStep(5)" disabled>Next</button>
     <button class="previous-button" onclick="goToStep(3)">Previous</button>
 </div>
 
-
-<!-- Seção Railing -->
-<div class="form-section" id="railing-selection-section">
-    <h2>Selecione o tipo de railing para sua escada:</h2>
-    <p>Escolha o tipo de railing que você deseja:</p>
-    <div class="railing-options">
-        <div class="stair-option" onclick="selectOption(this, 'railingType', 'glass')">
-            <strong>Glass Railing</strong>
-        </div>
-        <div class="stair-option" onclick="selectOption(this, 'railingType', 'horizontal')">
-            <strong>Horizontal Railing</strong>
-        </div>
-        <div class="stair-option" onclick="selectOption(this, 'railingType', 'vertical')">
-            <strong>Vertical Railing</strong>
-        </div>
-        <div class="stair-option" onclick="selectOption(this, 'railingType', 'metal')">
-            <strong>Metal Panels (including exterior)</strong>
-        </div>
-    </div>
-    <button class="next-button" onclick="goToStep(5)">Next</button>
-    <button class="previous-button" onclick="goToStep(4)">Previous</button>
-</div>
 
 <!-- Seção Tread -->
 <div class="form-section" id="tread-section">
@@ -176,7 +174,7 @@
             <p>White Oak</p>
         </div>
     </div>
-    <button class="next-button" onclick="goToStep(7)">Next</button>
+    <button class="next-button" onclick="goToStep(6)">Next</button>
     <button class="previous-button" onclick="goToStep(4)">Previous</button>
 </div>
 
@@ -206,11 +204,12 @@
     <p>Aqui está o resumo das suas escolhas:</p>
 
     <div class="summary-container">
-        <p><strong>stair-type-section</strong> <span id="stair-type-section"></span></p>
-        <p><strong>Height:</strong> <span id="height-selection"></span></p>
-        <p><strong>Tread Type:</strong> <span id="tread-section"></span></p>
-        <p><strong>Handrail:</strong> <span id="handrail-selection"></span></p>
+        <p><strong>Stair Type:</strong> <span id="summary-stair-type"></span></p>
+        <p><strong>Stair Location:</strong> <span id="summary-stair-location"></span></p>
+        <p><strong>Railing Type:</strong> <span id="summary-railing"></span></p>
+        <p><strong>Tread Type:</strong> <span id="summary-tread"></span></p>
     </div>
+    
 </div>
 
  <!-- Modal para Details -->
