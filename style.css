@@ -26,7 +26,7 @@ body {
 
 /* Imagem */
 #image-container {
-    width: 50vw; /* Ocupa 50% da largura da tela */
+    width: 45vw; /* Ocupa 50% da largura da tela */
     height: 100vh; /* Garantir que ocupe 100% da altura da tela */
     background-image: url('img/FLOATINGSTAIRS-GLASSRAILING2-1024x1024 (2).jpg');
     background-size: cover;
@@ -129,7 +129,7 @@ body {
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    text-align: center;
+    text-align: center;     
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -238,28 +238,6 @@ body {
 
 .help-button:hover {
     background-color: #004d47;
-}
-
-/* Seção Dimension */
-#dimension-section {
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-#dimension-section h2 {
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-#dimension-section p {
-    font-size: 18px;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 10px;
 }
 
 /* Estilo para os rótulos */
@@ -833,3 +811,42 @@ label {
     text-decoration: none; /* Remove o sublinhado no hover */
 }
 
+
+
+
+.form-section {
+    display: none; /* Oculta todas as seções por padrão */
+}
+
+.form-section.active {
+    display: block; /* Exibe a seção ativa */
+}
+
+.stair-option {
+    padding: 25px; /* Aumenta o espaçamento interno */
+    margin-bottom: 15px; /* Maior espaçamento entre os itens */
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona sombra suave */
+    text-align: center; /* Centraliza o texto */
+    font-size: 1.2rem; /* Aumenta o tamanho do texto */
+    line-height: 1.5;
+    min-height: 60px; /* Define uma altura mínima */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stair-option:hover {
+    background-color: #f9f9f9;
+    border-color: #E3A03B; /* Amarelo destaque */
+}
+
+.stair-option.selected {
+    background-color: #f9f9f9;
+    border-color: #E3A03B; /* Amarelo destaque */
+    box-shadow: 0 0 8px rgba(227, 160, 59, 0.5);
+    transform: scale(1.02); /* Efeito sutil de destaque */
+}
